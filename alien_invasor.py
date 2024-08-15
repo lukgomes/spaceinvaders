@@ -1,13 +1,15 @@
 import sys
 import pygame
 from settings import Settings
+from ship import Ship
 
 def run_game():
     # Inicializa o jogo e cria um objeto para a tela
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
-    pygame.display.set_caption("Alien Invasion") 
+    pygame.display.set_caption("Alien Invasion")
+    ship = Ship(screen) # Cria uma nave
 
     # Inicia o laço principal do jogo
     while True:
@@ -18,6 +20,7 @@ def run_game():
 
             # Redesenha a tela a cada passagem do laço
             screen.fill(ai_settings.bg_color)
+            ship.blitme()
             # Deixa a tela mais recente visível
             pygame.display.flip()
 
