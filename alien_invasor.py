@@ -9,7 +9,7 @@ def run_game():
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
-    ship = Ship(screen) # Cria uma nave
+    ship = Ship(ai_settings, screen) # Cria uma nave
 
     # Inicia o laço principal do jogo
     while True:
