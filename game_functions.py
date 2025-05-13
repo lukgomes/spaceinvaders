@@ -11,6 +11,7 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    print(len(bullets))
 
 def fire_bullet(ai_settings, screen, ship, bullets):
     """Dispara um progétil se o limite ainda não foi alcançado."""
@@ -27,7 +28,6 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
         fire_bullet(ai_settings, screen, ship, bullets)
-        # Cria um novo projétil e o adiciona ao grupo de projéteis
 
 def check_keyup_events(event, ship):
     """Responde a solturas de tecla."""
