@@ -8,6 +8,12 @@ class Settings():
         self.screen_height = 650
         self.bg_color = (230, 230, 230)
 
+        # Configuração dos alienigenas
+        self.alien_speed_factor = 1
+        self.fleet_drop_speed = 10
+        # freet_direction igual a 1 representa a direita; -1 representa a esquerda
+        self.fleet_direction = 1
+
         # Configurações da espaçonave
         self.ship_speed_factor = 1.5
 
