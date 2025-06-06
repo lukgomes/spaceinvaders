@@ -3,7 +3,7 @@ import pygame
 from bullet import Bullet
 from alien import Alien
 
-def update_bullets(bullets):
+def update_bullets(ai_settings, screen, ship, aliens, bullets):
     """Atualiza a posição dos projéteis e se livra dos projéteis antigos"""
     # Atualiza as posições dos projéteis
     bullets.update()
@@ -12,6 +12,18 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+
+    check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets)
+
+def check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets):
+    """Responde a colisões entre projeteis e alienígenas."""
+    # Remove qualquer projétil e alienígena que tenha colidido
+    collision = pygame.sprite.groupcollide(bullets, aliens, True, True)
+
+    if len(aliens) == 0:
+        # Destói os projéteis e cria uma nova frota
+        bullets.empty()
+        create_fleet(ai_settings, screen, ship, aliens)
 
 def fire_bullet(ai_settings, screen, ship, bullets):
     """Dispara um progétil se o limite ainda não foi alcançado."""
